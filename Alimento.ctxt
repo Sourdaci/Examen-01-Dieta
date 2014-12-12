@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=nombre\ proteinas\ carbohidratos\ grasas
+comment0.target=Alimento(java.lang.String,\ float,\ float,\ float)
+comment0.text=\r\n\ Nuevo\ alimento\r\n\ Los\ valores\ numericos\ deben\ llevar\ una\ "F"\ al\ final\r\n
+comment1.params=
+comment1.target=void\ muestraDatos()
+comment1.text=\r\n\ Muestra\ los\ valores\ alimenticios\ del\ alimento\r\n
+numComments=2

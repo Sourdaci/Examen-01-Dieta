@@ -11,6 +11,10 @@ public class Usuario
     private String nombre;
     // Ingestas realizadas por el usuario
     private float proteinas, carbohidratos, grasas;
+    // Nombre del alimento mas calorico consumido
+    private String masCalorico;
+    // Calorias del alimento consumido mas calorico
+    private float masCalorias;
 
     /**
      * Nuevo Usuario de la aplicacion
@@ -38,6 +42,7 @@ public class Usuario
         proteinas += (manduca.getProteinas() * (cantidad / 100.0F));
         carbohidratos += (manduca.getCarbohidratos() * (cantidad / 100.0F));
         grasas += (manduca.getGrasas() * (cantidad / 100.0F));
+        comparaCaloriasAlimento(manduca);
     }
     
     /**
@@ -86,6 +91,28 @@ public class Usuario
             System.out.println(comparar.getNombre() + " ha consumido mas calorias que " + nombre);
         }else{
             System.out.println(nombre + " y " + comparar.getNombre() + " han consumido la misma cantidad de calorias");
+        }
+    }
+    
+    /**
+     * Muestra el alimento mas calorico consumido... si existe
+     */
+    public void conMasCalorias(){
+        if(masCalorico != null){
+            System.out.println("Alimento mas calorico ingerido por el usuario hasta el momento: " + masCalorico);
+        }else{
+            System.out.println("El usuario todavia no ha comido nada");
+        }
+    }
+    
+    /**
+     * Compara el alimento comido con el almacenado para ver si tiene mas contenido calorico
+     * Si lo tiene, lo almacena
+     */
+    private void comparaCaloriasAlimento(Alimento manduca){
+        if(manduca.getCalorias() > masCalorias){
+            masCalorias = manduca.getCalorias();
+            masCalorico = manduca.getNombre();
         }
     }
 }

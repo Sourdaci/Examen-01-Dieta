@@ -22,6 +22,13 @@ public class Usuario
         carbohidratos = 0.0F;
         grasas = 0.0F;
     }
+    
+    /**
+     * Devuelve el nombre del usuario
+     */
+    public String getNombre(){
+        return nombre;
+    }
 
     /**
      * El Usuario ingiere una cantidad determinada de un alimento
@@ -55,7 +62,7 @@ public class Usuario
     /**
      * Calcula las calorias ingeridas
      */
-    private float caloriasIngeridas(){
+    public float caloriasIngeridas(){
         return ((proteinas * 4) + (carbohidratos * 4) + (grasas * 9));
     }
     
@@ -65,5 +72,20 @@ public class Usuario
     private float nutriPor(float nutriente){
         float total = proteinas + carbohidratos + grasas;
         return ((nutriente / total) * 100);
+    }
+    
+    /**
+     * Compara dos usuarios para saber quien ha ingerido mas calorias
+     */
+    public void comparaCalorias(Usuario comparar){
+        float misCalorias = caloriasIngeridas();
+        float otrasCalorias = comparar.caloriasIngeridas();
+        if(misCalorias > otrasCalorias){
+            System.out.println(nombre + " ha consumido mas calorias que " + comparar.getNombre());
+        }else if(misCalorias < otrasCalorias){
+            System.out.println(comparar.getNombre() + " ha consumido mas calorias que " + nombre);
+        }else{
+            System.out.println(nombre + " y " + comparar.getNombre() + " han consumido la misma cantidad de calorias");
+        }
     }
 }

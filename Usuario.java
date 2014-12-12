@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Write a description of class Usuario here.
  * 
@@ -15,6 +15,8 @@ public class Usuario
     private String masCalorico;
     // Calorias del alimento consumido mas calorico
     private float masCalorias;
+    // Registro de alimentos consumidos por el usuario
+    private ArrayList<Alimento> consumo;
 
     /**
      * Nuevo Usuario de la aplicacion
@@ -25,6 +27,7 @@ public class Usuario
         proteinas = 0.0F;
         carbohidratos = 0.0F;
         grasas = 0.0F;
+        consumo = new ArrayList<Alimento>();
     }
     
     /**
@@ -43,6 +46,7 @@ public class Usuario
         carbohidratos += (manduca.getCarbohidratos() * (cantidad / 100.0F));
         grasas += (manduca.getGrasas() * (cantidad / 100.0F));
         comparaCaloriasAlimento(manduca);
+        consumo.add(manduca);
     }
     
     /**
@@ -114,6 +118,24 @@ public class Usuario
         if(manduca.getCalorias() > masCalorias){
             masCalorias = manduca.getCalorias();
             masCalorico = manduca.getNombre();
+        }
+    }
+    
+    /**
+     * Permite al usuario consultar el alimento que ha consumido segun su orden
+     * Si introduce 1, vera el primer alimento consumido
+     * Si introduce 2, vera el segundo alimento consumido
+     * Y asi sucesivamente
+     */
+    public void consultaConsumo(int index){
+        if(consumo.size() != 0){
+            if(index >= 1 && index <= consumo.size()){
+                consumo.get(index - 1).muestraDatos();
+            }else{
+                System.out.println("Registro invalido, registros validos de 1 a " + consumo.size());
+            }
+        }else{
+            System.out.println("No ha ingerido ningun alimento todavia");
         }
     }
 }

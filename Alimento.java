@@ -23,6 +23,21 @@ public class Alimento
         this.carbohidratos = carbohidratos;
         this.grasas = grasas;
     }
+    
+    //Devuelve las proteinas
+    public float getProteinas(){
+        return proteinas;
+    }
+    
+    //Devuelve los carbohidratos
+    public float getCarbohidratos(){
+        return carbohidratos;
+    }
+    
+    //Devuelve las grasas
+    public float getGrasas(){
+        return grasas;
+    }
 
     /**
      * Muestra los valores alimenticios del alimento
@@ -33,7 +48,7 @@ public class Alimento
         System.out.println("Proteinas por cada 100 gramos: " + proteinas);
         System.out.println("Carbohidratos por cada 100 gramos: " + carbohidratos);
         System.out.println("Grasas por cada 100 gramos: " + grasas);
-        System.out.println("Calorias: " + ((proteinas * 4) + (carbohidratos * 4) + (grasas * 9)));
+        System.out.println("Calorias: " + caloriasAlimento());
         System.out.print("Componente/s mayoritario/s: ");
         if(proteinas > carbohidratos && proteinas > grasas){
             System.out.print("Proteinas\n");
@@ -50,5 +65,12 @@ public class Alimento
         }else{
             System.out.print("Carbohidratos y Grasas\n");
         }
+    }
+    
+    /**
+     * Calcula las calorias del alimento
+     */
+    private float caloriasAlimento(){
+        return ((proteinas * 4) + (carbohidratos * 4) + (grasas * 9));
     }
 }

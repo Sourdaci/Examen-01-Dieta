@@ -1,15 +1,12 @@
-import java.util.*;
+import java.util.ArrayList;
 /**
- * Write a description of class Usuario here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Programa sencillo para llevar el control de dietas de una persona
  */
 public class Usuario
 {
     // Nombre del usuario que utiliza esta aplicacion
     private String nombre;
-    // Ingestas realizadas por el usuario
+    // Ingestas de macronutrientes realizadas por el usuario
     private float proteinas, carbohidratos, grasas;
     // Nombre del alimento mas calorico consumido
     private String masCalorico;
@@ -31,22 +28,30 @@ public class Usuario
     }
     
     /**
-     * Devuelve el nombre del usuario
+     * Devuelve el nombre del usuario de la aplicacion
      */
     public String getNombre(){
         return nombre;
     }
 
     /**
-     * El Usuario ingiere una cantidad determinada de un alimento
-     * Primero toma el alimento, luego los gramos que desea
+     * El Usuario ingiere una cantidad determinada en gramos de un alimento
      */
     public void comer(Alimento manduca, float cantidad){
-        proteinas += (manduca.getProteinas() * (cantidad / 100.0F));
-        carbohidratos += (manduca.getCarbohidratos() * (cantidad / 100.0F));
-        grasas += (manduca.getGrasas() * (cantidad / 100.0F));
+        //Los macronutrientes recibidos del alimento se contabilizan cada 100 gramos
+        //Se deben calcular los macronutrientes consumidos dependiendo de los gramos ingeridos
+        proteinas += aumentoMacronutriente(manduca.getProteinas(), cantidad);
+        carbohidratos += aumentoMacronutriente(manduca.getCarbohidratos(), cantidad);
+        grasas += aumentoMacronutriente(manduca.getGrasas(), cantidad);
         comparaCaloriasAlimento(manduca);
         consumo.add(manduca);
+    }
+    
+    /**
+     * Calcula las cantidades de macronutrientes ingeridos al tomar un alimento
+     */
+    private float aumentoMacronutriente(float nutriente, float cantidad){
+        return (nutriente * (cantidad / 100.0F));
     }
     
     /**
@@ -70,14 +75,14 @@ public class Usuario
     }
     
     /**
-     * Calcula las calorias ingeridas
+     * Calcula las calorias ingeridas en total por el usuario
      */
     public float caloriasIngeridas(){
         return ((proteinas * 4) + (carbohidratos * 4) + (grasas * 9));
     }
     
     /**
-     * Calcula porcentajes para muestraEstado()
+     * Calcula porcentajes de macronutrientes consumidos para muestraEstado()
      */
     private float nutriPor(float nutriente){
         float total = proteinas + carbohidratos + grasas;

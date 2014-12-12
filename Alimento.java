@@ -1,9 +1,7 @@
 
 /**
- * Write a description of class Alimento here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Representa un alimento que cualquier ser humano puede consumir
+ * Sera registrado mediante un programa de control de dieta
  */
 public class Alimento
 {
@@ -14,7 +12,7 @@ public class Alimento
 
     /**
      * Nuevo alimento
-     * Los valores numericos deben llevar una "F" al final
+     * Los valores numericos deben llevar una "F" al final si llevan decimales
      */
     public Alimento(String nombre, float proteinas, float carbohidratos, float grasas)
     {
@@ -24,22 +22,30 @@ public class Alimento
         this.grasas = grasas;
     }
     
-    //Devuelve el nombre
+    /**
+     * Devuelve el nombre del alimento
+     */
     public String getNombre(){
         return nombre;
     }
     
-    //Devuelve las proteinas
+    /**
+     * Devuelve las proteinas del alimento
+     */
     public float getProteinas(){
         return proteinas;
     }
     
-    //Devuelve los carbohidratos
+    /**
+     * Devuelve los carbohidratos del alimento
+     */
     public float getCarbohidratos(){
         return carbohidratos;
     }
     
-    //Devuelve las grasas
+    /**
+     * Devuelve las grasas del alimento
+     */
     public float getGrasas(){
         return grasas;
     }
@@ -55,6 +61,7 @@ public class Alimento
         System.out.println("Grasas por cada 100 gramos: " + grasas);
         System.out.println("Calorias: " + getCalorias());
         System.out.print("Componente/s mayoritario/s: ");
+        //Compara los macronutrientes para mostrar el mayoritario
         if(proteinas > carbohidratos && proteinas > grasas){
             System.out.print("Proteinas\n");
         }else if(carbohidratos > proteinas && carbohidratos > grasas){
@@ -76,6 +83,8 @@ public class Alimento
      * Calcula las calorias del alimento
      */
     public float getCalorias(){
+        //Las proteinas y carbohidratos aportan 4 calorias por unidad
+        //Las grasas aportan 9 calorias por unidad
         return ((proteinas * 4) + (carbohidratos * 4) + (grasas * 9));
     }
 }

@@ -37,11 +37,19 @@ public class Usuario
      * Muestra el estado del Usuario
      */
     public void muestraEstado(){
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Gramos de proteinas ingeridos: " + proteinas);
-        System.out.println("Gramos de carbohidratos ingeridos: " + carbohidratos);
-        System.out.println("Gramos de grasas ingeridos: " + grasas);
-        System.out.println("Calorias ingeridas: " + caloriasIngeridas());
+        if(proteinas != 0 || carbohidratos != 0 || grasas != 0){
+            System.out.println("Nombre: " + nombre);
+            System.out.println("Gramos de proteinas ingeridos: " + proteinas + " (" + nutriPor(proteinas) + "%)");
+            System.out.println("Gramos de carbohidratos ingeridos: " + carbohidratos + " (" + nutriPor(carbohidratos) + "%)");
+            System.out.println("Gramos de grasas ingeridos: " + grasas + " (" + nutriPor(grasas) + "%)");
+            System.out.println("Calorias ingeridas: " + caloriasIngeridas());
+        }else{
+            System.out.println("Nombre: " + nombre);
+            System.out.println("Gramos de proteinas ingeridos: " + proteinas);
+            System.out.println("Gramos de carbohidratos ingeridos: " + carbohidratos);
+            System.out.println("Gramos de grasas ingeridos: " + grasas);
+            System.out.println("Calorias ingeridas: " + caloriasIngeridas());
+        }
     }
     
     /**
@@ -49,5 +57,13 @@ public class Usuario
      */
     private float caloriasIngeridas(){
         return ((proteinas * 4) + (carbohidratos * 4) + (grasas * 9));
+    }
+    
+    /**
+     * Calcula porcentajes para muestraEstado()
+     */
+    private float nutriPor(float nutriente){
+        float total = proteinas + carbohidratos + grasas;
+        return ((nutriente / total) * 100);
     }
 }

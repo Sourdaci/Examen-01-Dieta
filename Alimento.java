@@ -55,12 +55,12 @@ public class Alimento
      */
     public void muestraDatos()
     {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Proteinas por cada 100 gramos: " + proteinas);
-        System.out.println("Carbohidratos por cada 100 gramos: " + carbohidratos);
-        System.out.println("Grasas por cada 100 gramos: " + grasas);
-        System.out.println("Calorias: " + getCalorias());
-        System.out.print("Componente/s mayoritario/s: ");
+        System.out.printf("%-35s%s", "Nombre:", nombre + "\n");
+        System.out.printf("%-35s%s", "Proteinas por cada 100 gramos:", proteinas + "\n");
+        System.out.printf("%-35s%s", "Carbohidratos por cada 100 gramos:", carbohidratos + "\n");
+        System.out.printf("%-35s%s", "Grasas por cada 100 gramos:", grasas + "\n");
+        System.out.printf("%-35s%s", "Calorias:", getCalorias() + "\n");
+        System.out.printf("%-35s", "Componente/s mayoritario/s:");
         //Compara los macronutrientes para mostrar el mayoritario
         if(proteinas > carbohidratos && proteinas > grasas){
             System.out.print("Proteinas\n");

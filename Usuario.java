@@ -58,20 +58,20 @@ public class Usuario
      * Muestra el estado del Usuario
      */
     public void muestraEstado(){
-        System.out.println("Nombre: " + nombre);
-            System.out.print("Gramos de proteinas ingeridos: " + proteinas);
-            if(proteinas != 0){
-                System.out.print(" (" + nutriPor(proteinas) + "%)");
-            }
-            System.out.print("\nGramos de carbohidratos ingeridos: " + carbohidratos);
-            if(carbohidratos != 0){
-                System.out.print(" (" + nutriPor(carbohidratos) + "%)");
-            }
-            System.out.print("\nGramos de grasas ingeridos: " + grasas);
-            if(grasas != 0){
-                System.out.print(" (" + nutriPor(grasas) + "%)");
-            }
-            System.out.println("\nCalorias ingeridas: " + caloriasIngeridas());
+        System.out.printf("%-35s%s", "Nombre: ", nombre + "\n");
+        System.out.printf("%-35s%s", "Gramos de proteinas ingeridos: ", proteinas);
+        if(proteinas != 0){
+            System.out.print(" (" + nutriPor(proteinas) + "%)");
+        }
+        System.out.printf("%-36s%s", "\nGramos de carbohidratos ingeridos: ", carbohidratos);
+        if(carbohidratos != 0){
+            System.out.print(" (" + nutriPor(carbohidratos) + "%)");
+        }
+        System.out.printf("%-36s%s", "\nGramos de grasas ingeridos: ", grasas);
+        if(grasas != 0){
+            System.out.print(" (" + nutriPor(grasas) + "%)");
+        }
+        System.out.printf("%-36s%s", "\nCalorias ingeridas: ", caloriasIngeridas() + "\n");
     }
     
     /**

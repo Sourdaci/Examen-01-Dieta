@@ -60,23 +60,28 @@ public class Alimento
         System.out.printf("%-35s%s", "Carbohidratos por cada 100 gramos:", carbohidratos + "\n");
         System.out.printf("%-35s%s", "Grasas por cada 100 gramos:", grasas + "\n");
         System.out.printf("%-35s%s", "Calorias:", getCalorias() + "\n");
-        System.out.printf("%-35s", "Componente/s mayoritario/s:");
-        //Compara los macronutrientes para mostrar el mayoritario
-        if(proteinas > carbohidratos && proteinas > grasas){
-            System.out.print("Proteinas\n");
-        }else if(carbohidratos > proteinas && carbohidratos > grasas){
-            System.out.print("Carbohidratos\n");
-        }else if(grasas > proteinas && grasas > carbohidratos){
-            System.out.print("Grasas\n");
-        }else if(proteinas == carbohidratos && proteinas == grasas){
-            System.out.print("Proteinas, Carbohidratos y Grasas\n");
-        }else if(proteinas == carbohidratos && proteinas > grasas){
-            System.out.print("Proteinas y Carbohidratos\n");
-        }else if(proteinas == grasas && proteinas > carbohidratos){
-            System.out.print("Proteinas y Grasas\n");
-        }else{
-            System.out.print("Carbohidratos y Grasas\n");
+        System.out.printf("%-35s%s", "Componente/s mayoritario/s:", mayoritario());
+    }
+    
+    /**
+     * Devuelve el macronutriente mayoritario del Alimento
+     */
+    private String mayoritario(){
+        String mayoritario = "Proteinas, Carbohidratos y Grasas";
+        if (proteinas > carbohidratos && proteinas > grasas){
+            mayoritario = "Proteinas";
+        }else if (carbohidratos > proteinas && carbohidratos > grasas){
+             mayoritario = "Carbohidratos";  
+        }else if (grasas > proteinas && grasas > carbohidratos){
+             mayoritario = "Grasas";  
+        }else if (grasas == proteinas && grasas > carbohidratos){
+             mayoritario = "Proteinas y Grasas";  
+        }else if (carbohidratos == proteinas && grasas < carbohidratos){
+             mayoritario = "Proteinas y Carbohidratos";  
+        }else if (carbohidratos == grasas && grasas > proteinas){
+             mayoritario = "Carbohidratos y Grasas";  
         }
+        return mayoritario;
     }
     
     /**

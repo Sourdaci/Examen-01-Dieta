@@ -8,10 +8,8 @@ public class Usuario
     private String nombre;
     // Ingestas de macronutrientes realizadas por el usuario
     private float proteinas, carbohidratos, grasas;
-    // Nombre del alimento mas calorico consumido
-    private String masCalorico;
-    // Calorias del alimento consumido mas calorico
-    private float masCalorias;
+    // Indice del alimento mas calorico consumido
+    private int masCalorico;
     // Registro de alimentos consumidos por el usuario
     private ArrayList<Alimento> consumo;
 
@@ -25,6 +23,7 @@ public class Usuario
         carbohidratos = 0.0F;
         grasas = 0.0F;
         consumo = new ArrayList<Alimento>();
+        masCalorico = -1;
     }
     
     /**
@@ -43,8 +42,8 @@ public class Usuario
         proteinas += aumentoMacronutriente(manduca.getProteinas(), cantidad);
         carbohidratos += aumentoMacronutriente(manduca.getCarbohidratos(), cantidad);
         grasas += aumentoMacronutriente(manduca.getGrasas(), cantidad);
-        comparaCaloriasAlimento(manduca);
         consumo.add(manduca);
+        comparaCaloriasAlimento();
     }
     
     /**
@@ -108,8 +107,8 @@ public class Usuario
      * Muestra el alimento mas calorico consumido... si existe
      */
     public void conMasCalorias(){
-        if(masCalorico != null){
-            System.out.println("Alimento mas calorico ingerido por el usuario hasta el momento: " + masCalorico);
+        if(masCalorico > -1){
+            System.out.println("Alimento mas calorico ingerido por el usuario hasta el momento: " + consumo.get(masCalorico).getNombre());
         }else{
             System.out.println("El usuario todavia no ha comido nada");
         }
@@ -119,10 +118,13 @@ public class Usuario
      * Compara el alimento comido con el almacenado para ver si tiene mas contenido calorico
      * Si lo tiene, lo almacena
      */
-    private void comparaCaloriasAlimento(Alimento manduca){
-        if(manduca.getCalorias() > masCalorias){
-            masCalorias = manduca.getCalorias();
-            masCalorico = manduca.getNombre();
+    private void comparaCaloriasAlimento(){
+        if(masCalorico > -1){
+            if(consumo.get(consumo.size() -1).getCalorias() > consumo.get(masCalorico).getCalorias()){
+                masCalorico = consumo.size() -1;
+            }
+        }else{
+            masCalorico = 0;
         }
     }
     

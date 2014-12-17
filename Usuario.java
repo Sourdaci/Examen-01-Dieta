@@ -94,12 +94,13 @@ public class Usuario
     public void comparaCalorias(Usuario comparar){
         float misCalorias = caloriasIngeridas();
         float otrasCalorias = comparar.caloriasIngeridas();
+		String nombreCompi = comparar.getNombre();
         if(misCalorias > otrasCalorias){
-            System.out.println(nombre + " ha consumido mas calorias que " + comparar.getNombre());
+            System.out.println(nombre + " ha consumido mas calorias que " + nombreCompi);
         }else if(misCalorias < otrasCalorias){
-            System.out.println(comparar.getNombre() + " ha consumido mas calorias que " + nombre);
+            System.out.println(nombreCompi + " ha consumido mas calorias que " + nombre);
         }else{
-            System.out.println(nombre + " y " + comparar.getNombre() + " han consumido la misma cantidad de calorias");
+            System.out.println(nombre + " y " + nombreCompi + " han consumido la misma cantidad de calorias");
         }
     }
     
@@ -108,7 +109,8 @@ public class Usuario
      */
     public void conMasCalorias(){
         if(masCalorico > -1){
-            System.out.println("Alimento mas calorico ingerido por el usuario hasta el momento: " + consumo.get(masCalorico).getNombre());
+            System.out.println("Alimento mas calorico ingerido por el usuario hasta el momento:");
+			consumo.get(masCalorico).muestraDatos();
         }else{
             System.out.println("El usuario todavia no ha comido nada");
         }
